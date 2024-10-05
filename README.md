@@ -17,7 +17,7 @@ azure_inference = RaudaInferencer(
 ```
 You can then define functions with the @model decorator to specify the model and output type:
 
-## Simple text output
+### Simple text output
 ```python
 @oai_inference.model("gpt-4o-mini", output_type=OutputType.TEXT)
 def output_text_greeting(name: str) -> str:
@@ -25,7 +25,7 @@ def output_text_greeting(name: str) -> str:
     return f"Hello! My name is {name}"
 ```
 
-## JSON (Python dictionary) output
+### JSON (Python dictionary) output
 ```python
 @azure_inference.model("regional-eu-gpt-4o", output_type=OutputType.JSON_OBJECT)
 def output_json_greeting_json(name: str) -> Dict:
@@ -33,7 +33,7 @@ def output_json_greeting_json(name: str) -> Dict:
     return f"Hello! My name is {name}, how are you?"
 ```
 
-## Boolean output
+### Boolean output
 ```python
 @oai_inference.model("gpt-4o-mini", output_type=OutputType.BOOLEAN)
 def output_boolean(name: str) -> bool:
@@ -41,7 +41,7 @@ def output_boolean(name: str) -> bool:
     return name == "Rauda"
 ```
 
-## Pydantic model (using Structured Objects, available in GPT-4o and 4o-mini only)
+### Pydantic model (using Structured Objects, available in GPT-4o and 4o-mini only)
 ```python
 class CustomModel(BaseModel):
     key: str
