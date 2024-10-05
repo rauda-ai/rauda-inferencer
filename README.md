@@ -25,7 +25,7 @@ def output_text_greeting(name: str) -> str:
     return f"Hello! My name is {name}"
 ```
 
-### JSON (Python dictionary) output
+### JSON / Python dictionary output (Azure OpenAI example)
 ```python
 @azure_inference.model("regional-eu-gpt-4o", output_type=OutputType.JSON_OBJECT)
 def output_json_greeting_json(name: str) -> Dict:
