@@ -38,7 +38,7 @@ def output_json_greeting_json(name: str) -> Dict:
 @oai_inference.model("gpt-4o-mini", output_type=OutputType.BOOLEAN)
 def output_boolean(name: str) -> bool:
     """If the user's name is 'Rauda', return True. Otherwise, return False."""
-    return name == "Rauda"
+    return f"Hello, my name is {name}"
 ```
 
 ### Pydantic model (using Structured Objects, available in GPT-4o and 4o-mini only)
@@ -49,5 +49,5 @@ class CustomModel(BaseModel):
 @oai_inference.model("gpt-4o-mini", output_type=CustomModel)
 def output_custom_model(name: str) -> CustomModel:
     """Return a custom model with a key."""
-    return CustomModel(key=f"Hello, {name}")
+    return f"Hello, the key for the model has a value of {name}"
 ```
