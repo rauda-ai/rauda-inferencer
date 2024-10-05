@@ -1,0 +1,4 @@
+openai>=1.51.0
+pydantic>=2.9.2
+setuptools>=75.1.0
+pytest>=8.3.3
