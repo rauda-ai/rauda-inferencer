@@ -15,7 +15,9 @@ azure_inference = RaudaInferencer(
     project_name="your_project_name", api_key="your_azure_openai_api_key"
 )
 ```
-You can then define functions with the @model decorator to specify the model and output type:
+You can then define functions with the @model decorator to specify the model and output type.
+
+The function's docstring will serve as the system prompt (optional), and the returned string will be the user prompt.
 
 ### Simple text output
 ```python
