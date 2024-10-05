@@ -53,3 +53,5 @@ def output_custom_model(name: str) -> CustomModel:
     """Return a custom model with a key."""
     return f"Hello, the key for the model has a value of {name}"
 ```
+
+The functions will return the specified `output_type` format.
