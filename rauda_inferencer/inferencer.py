@@ -16,6 +16,7 @@ class RaudaInferencer:
         api_key: str = None,
         project_name: str = None,
         api_version="2024-08-01-preview",
+        log_level=logging.INFO,
     ):
         if api_key is None:
             raise ValueError("API key is required")
@@ -32,11 +33,11 @@ class RaudaInferencer:
         else:
             self.openai = OpenAI(api_key=self.api_key)
         
-        self.setup_logger()
+        self.setup_logger(log_level)
 
-    def setup_logger(self):
+    def setup_logger(self, log_level=logging.INFO):
         self.logger = logging.getLogger("rauda-inferencer")
-        self.logger.setLevel(logging.DEBUG)
+        self.logger.setLevel(log_level)
 
         if not self.logger.hasHandlers():
             ch = logging.StreamHandler()
