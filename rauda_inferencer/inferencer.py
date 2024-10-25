@@ -66,11 +66,23 @@ class RaudaInferencer:
         def decorator(func):
             @wraps(func)
             def wrapper(*args, **kwargs):
-                prompt = func(*args, **kwargs)
+                func_result = func(*args, **kwargs)
+
+                prompt = ""
+                system_prompt = ""
+
+                if isinstance(prompt, tuple):
+                    prompt = func_result[0]
+                    system_prompt = func_result[1]
+                else:
+                    prompt = func_result
 
                 messages = []
                 if func.__doc__:
                     messages.append({"role": "system", "content": func.__doc__})
+                elif system_prompt:
+                    messages.append({"role": "system", "content": system_prompt})
+                    
                 messages.append({"role": "user", "content": prompt})
 
                 if output_type == OutputType.JSON_OBJECT:
